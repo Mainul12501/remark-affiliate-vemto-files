@@ -36,6 +36,9 @@ return new class extends Migration {
                 ->default('inactive');
             $table->string('active_till')->nullable();
 
+            $table->index('user_id');
+            $table->index('bank_id');
+
             $table->timestamps();
             $table->softDeletes();
         });

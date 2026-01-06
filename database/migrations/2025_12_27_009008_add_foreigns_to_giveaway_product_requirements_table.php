@@ -10,32 +10,34 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('giveaway_product_requirements', function (
+            Blueprint $table
+        ) {
             $table
-                ->foreign('user_id')
+                ->foreign('requested_user_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('approved_by')
+                ->foreign('requested_product_id')
+                ->references('id')
+                ->on('products')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+
+            $table
+                ->foreign('admin_viewer_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('created_by')
+                ->foreign('approver_id')
                 ->references('id')
                 ->on('users')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
-            $table
-                ->foreign('affiliate_badge_id')
-                ->references('id')
-                ->on('affiliate_badges')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -46,11 +48,13 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropForeign(['approved_by']);
-            $table->dropForeign(['created_by']);
-            $table->dropForeign(['affiliate_badge_id']);
+        Schema::table('giveaway_product_requirements', function (
+            Blueprint $table
+        ) {
+            $table->dropForeign(['requested_user_id']);
+            $table->dropForeign(['requested_product_id']);
+            $table->dropForeign(['admin_viewer_id']);
+            $table->dropForeign(['approver_id']);
         });
     }
 };

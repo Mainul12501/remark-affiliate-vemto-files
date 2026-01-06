@@ -37,16 +37,32 @@ class UserFactory extends Factory
             'username' => $this->faker->unique->text(255),
             'approve_status' => $this->faker->numberBetween(0, 127),
             'block_status' => $this->faker->text(255),
+            'reffered_agent_url' => $this->faker->text(255),
+            'reffer_code' => $this->faker->unique->text(255),
+            'ref_influencer_count' => $this->faker->randomNumber(0),
+            'has_infl_partner_access' => $this->faker->numberBetween(0, 127),
+            'is_super_dev' => $this->faker->numberBetween(0, 127),
+            'user_slug' => $this->faker->text(255),
             'user_id' => function () {
                 return \App\Models\User::factory()->create([
                     'user_id' => null,
                     'created_by' => null,
+                    'approved_by' => null,
                 ])->id;
             },
             'created_by' => function () {
                 return \App\Models\User::factory()->create([
                     'user_id' => null,
                     'created_by' => null,
+                    'approved_by' => null,
+                ])->id;
+            },
+            'affiliate_badge_id' => \App\Models\AffiliateBadge::factory(),
+            'approved_by' => function () {
+                return \App\Models\User::factory()->create([
+                    'user_id' => null,
+                    'created_by' => null,
+                    'approved_by' => null,
                 ])->id;
             },
         ];

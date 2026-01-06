@@ -39,9 +39,34 @@ return new class extends Migration {
                 ->string('username')
                 ->nullable()
                 ->unique();
+            $table->unsignedBigInteger('approved_by')->nullable();
             $table->tinyInteger('approve_status')->default(0);
-            $table->string('block_status')->default('open');
+            $table
+                ->string('block_status')
+                ->default('open')
+                ->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
+            $table->string('reffered_agent_url')->nullable();
+            $table
+                ->string('reffer_code')
+                ->nullable()
+                ->unique();
+            $table
+                ->integer('ref_influencer_count')
+                ->default(0)
+                ->nullable();
+            $table->unsignedBigInteger('affiliate_badge_id')->nullable();
+            $table->tinyInteger('has_infl_partner_access')->default(0);
+            $table
+                ->tinyInteger('is_super_dev')
+                ->default(0)
+                ->nullable();
+            $table->string('user_slug');
+
+            $table->index('user_id');
+            $table->index('approved_by');
+            $table->index('created_by');
+            $table->index('affiliate_badge_id');
 
             $table->timestamps();
             $table->softDeletes();

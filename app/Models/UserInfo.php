@@ -27,7 +27,10 @@ class UserInfo extends Model
         'is_youtube_verified',
         'tin_number',
         'bin_number',
-        'tin_cert',
+        'tin_cert_img',
+        'nid',
+        'insta_profile_link',
+        'is_insta_verified',
     ];
 
     protected $searchableFields = ['*'];

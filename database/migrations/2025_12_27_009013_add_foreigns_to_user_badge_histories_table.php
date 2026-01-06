@@ -10,23 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('user_badge_histories', function (Blueprint $table) {
             $table
                 ->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
-            $table
-                ->foreign('approved_by')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
-            $table
-                ->foreign('created_by')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('CASCADE')
@@ -46,10 +32,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('user_badge_histories', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
-            $table->dropForeign(['approved_by']);
-            $table->dropForeign(['created_by']);
             $table->dropForeign(['affiliate_badge_id']);
         });
     }

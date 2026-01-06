@@ -35,7 +35,10 @@ class UserInfoFactory extends Factory
             'is_youtube_verified' => $this->faker->numberBetween(0, 127),
             'tin_number' => $this->faker->text(255),
             'bin_number' => $this->faker->text(255),
-            'tin_cert' => $this->faker->text(),
+            'tin_cert_img' => $this->faker->text(),
+            'nid' => $this->faker->text(255),
+            'insta_profile_link' => $this->faker->text(),
+            'is_insta_verified' => $this->faker->numberBetween(0, 127),
             'user_id' => \App\Models\User::factory(),
         ];
     }

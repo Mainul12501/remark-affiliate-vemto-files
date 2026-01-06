@@ -10,21 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table
-                ->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
-            $table
-                ->foreign('approved_by')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
+        Schema::table('affiliate_codes', function (Blueprint $table) {
             $table
                 ->foreign('created_by')
                 ->references('id')
@@ -33,9 +19,16 @@ return new class extends Migration {
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('affiliate_badge_id')
+                ->foreign('product_id')
                 ->references('id')
-                ->on('affiliate_badges')
+                ->on('products')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+
+            $table
+                ->foreign('influencer_campain_id')
+                ->references('id')
+                ->on('influencer_campains')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -46,11 +39,10 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropForeign(['approved_by']);
+        Schema::table('affiliate_codes', function (Blueprint $table) {
             $table->dropForeign(['created_by']);
-            $table->dropForeign(['affiliate_badge_id']);
+            $table->dropForeign(['product_id']);
+            $table->dropForeign(['influencer_campain_id']);
         });
     }
 };

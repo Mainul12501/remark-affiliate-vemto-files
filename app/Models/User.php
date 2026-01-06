@@ -34,9 +34,17 @@ class User extends Authenticatable
         'provider_token',
         'provider_id',
         'username',
+        'approved_by',
         'approve_status',
         'block_status',
         'created_by',
+        'reffered_agent_url',
+        'reffer_code',
+        'ref_influencer_count',
+        'affiliate_badge_id',
+        'has_infl_partner_access',
+        'is_super_dev',
+        'user_slug',
     ];
 
     protected $searchableFields = ['*'];
@@ -96,6 +104,57 @@ class User extends Authenticatable
     public function deletedBenefitListCategories2()
     {
         return $this->hasMany(BenefitListCategory::class, 'deleted_by');
+    }
+
+    public function affiliateBadge()
+    {
+        return $this->belongsTo(AffiliateBadge::class);
+    }
+
+    public function userBadgeHistories()
+    {
+        return $this->hasMany(UserBadgeHistory::class);
+    }
+
+    public function affiliateCodes()
+    {
+        return $this->hasMany(AffiliateCode::class, 'created_by');
+    }
+
+    public function influencerCampains()
+    {
+        return $this->hasMany(InfluencerCampain::class, 'created_by');
+    }
+
+    public function giveawayProductRequirementRequestedUsers()
+    {
+        return $this->hasMany(
+            GiveawayProductRequirement::class,
+            'requested_user_id'
+        );
+    }
+
+    public function giveawayProductRequirementAdminViewers()
+    {
+        return $this->hasMany(
+            GiveawayProductRequirement::class,
+            'admin_viewer_id'
+        );
+    }
+
+    public function giveawayProductRequirementApprovedByUsers()
+    {
+        return $this->hasMany(GiveawayProductRequirement::class, 'approver_id');
+    }
+
+    public function approvedBy()
+    {
+        return $this->hasOne(User::class, 'approved_by');
+    }
+
+    public function approvedByUser()
+    {
+        return $this->belongsTo(User::class, 'approved_by');
     }
 
     public function isSuperAdmin(): bool

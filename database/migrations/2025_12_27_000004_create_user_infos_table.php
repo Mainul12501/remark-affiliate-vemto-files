@@ -23,9 +23,14 @@ return new class extends Migration {
             $table->tinyInteger('is_fb_verified')->default(0);
             $table->text('youtube_profile_link')->nullable();
             $table->tinyInteger('is_youtube_verified')->default(0);
-            $table->string('tin_number');
-            $table->string('bin_number');
-            $table->text('tin_cert');
+            $table->string('tin_number')->nullable();
+            $table->string('bin_number')->nullable();
+            $table->text('tin_cert_img')->nullable();
+            $table->string('nid')->nullable();
+            $table->text('insta_profile_link')->nullable();
+            $table->tinyInteger('is_insta_verified')->default(0);
+
+            $table->index('user_id');
 
             $table->timestamps();
             $table->softDeletes();
