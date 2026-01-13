@@ -33,6 +33,7 @@ class UserBankInfoFactory extends Factory
             'status' => $this->faker->numberBetween(0, 127),
             'active_status' => 'inactive',
             'active_till' => $this->faker->text(255),
+            'account_number' => $this->faker->text(255),
             'user_id' => \App\Models\User::factory(),
             'bank_id' => \App\Models\Bank::factory(),
         ];

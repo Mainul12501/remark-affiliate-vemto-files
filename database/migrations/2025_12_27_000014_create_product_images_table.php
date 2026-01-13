@@ -15,7 +15,10 @@ return new class extends Migration {
             $table->unsignedBigInteger('product_id');
             $table->string('title');
             $table->text('src');
-            $table->tinyInteger('order')->default(0);
+            $table
+                ->tinyInteger('position')
+                ->default(0)
+                ->nullable();
             $table->text('img_alt')->nullable();
             $table->tinyInteger('status')->default(1);
             $table
@@ -23,6 +26,8 @@ return new class extends Migration {
                 ->nullable()
                 ->unique();
             $table->text('herlan_img_src')->nullable();
+
+            $table->index('product_id');
 
             $table->timestamps();
             $table->softDeletes();

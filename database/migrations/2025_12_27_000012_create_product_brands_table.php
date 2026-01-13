@@ -15,9 +15,17 @@ return new class extends Migration {
             $table->string('name');
             $table->string('slug');
             $table->text('logo')->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table
+                ->tinyInteger('status')
+                ->default(1)
+                ->nullable();
             $table->unsignedBigInteger('herlan_brand_id')->unique();
             $table->string('herlan_brand_slug')->unique();
+            $table
+                ->text('herlan_brand_uri')
+                ->nullable()
+                ->unique();
+            $table->text('note')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

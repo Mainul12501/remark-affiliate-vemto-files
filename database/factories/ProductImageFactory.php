@@ -25,7 +25,7 @@ class ProductImageFactory extends Factory
         return [
             'title' => $this->faker->sentence(10),
             'src' => $this->faker->text(),
-            'order' => $this->faker->numberBetween(0, 127),
+            'position' => $this->faker->numberBetween(0, 127),
             'img_alt' => $this->faker->text(),
             'status' => $this->faker->numberBetween(0, 127),
             'herlan_img_id' => $this->faker->unique->randomNumber(),

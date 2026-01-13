@@ -16,9 +16,11 @@ return new class extends Migration {
             $table->string('slug');
             $table->text('thumb_img')->nullable();
             $table->tinyInteger('status')->default(1);
-            $table->unsignedBigInteger('herlan_cat_id');
-            $table->text('herlan_cat_slug');
-            $table->text('herlan_cat_uri');
+            $table->unsignedBigInteger('herlan_cat_id')->unique();
+            $table->string('herlan_cat_slug')->unique();
+            $table->string('herlan_cat_uri')->unique();
+            $table->integer('herlan_cat_total_products')->default(0);
+            $table->unsignedBigInteger('product_category_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

@@ -45,6 +45,7 @@ class User extends Authenticatable
         'has_infl_partner_access',
         'is_super_dev',
         'user_slug',
+        'profile_title',
     ];
 
     protected $searchableFields = ['*'];

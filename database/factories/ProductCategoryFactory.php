@@ -27,9 +27,15 @@ class ProductCategoryFactory extends Factory
             'slug' => $this->faker->slug(),
             'thumb_img' => $this->faker->text(),
             'status' => $this->faker->numberBetween(0, 127),
-            'herlan_cat_id' => $this->faker->randomNumber(),
-            'herlan_cat_slug' => $this->faker->text(),
-            'herlan_cat_uri' => $this->faker->text(),
+            'herlan_cat_id' => $this->faker->unique->randomNumber(),
+            'herlan_cat_slug' => $this->faker->text(255),
+            'herlan_cat_uri' => $this->faker->text(255),
+            'herlan_cat_total_products' => $this->faker->randomNumber(0),
+            'product_category_id' => function () {
+                return \App\Models\ProductCategory::factory()->create([
+                    'product_category_id' => null,
+                ])->id;
+            },
         ];
     }
 }

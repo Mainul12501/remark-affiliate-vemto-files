@@ -32,10 +32,12 @@ class ProductFactory extends Factory
             'sku' => $this->faker->unique->text(),
             'status' => $this->faker->numberBetween(0, 127),
             'herlan_product_id' => $this->faker->unique->randomNumber(),
-            'herlan_product_uri' => $this->faker->unique->text(),
+            'herlan_product_uri' => $this->faker->text(),
             'affiliate_commission_rate' => $this->faker->numberBetween(0, 127),
             'total_clicked' => $this->faker->randomNumber(0),
             'sold_count' => $this->faker->randomNumber(0),
+            'short_description' => $this->faker->text(),
+            'long_description' => $this->faker->text(),
             'product_brand_id' => \App\Models\ProductBrand::factory(),
         ];
     }

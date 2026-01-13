@@ -20,6 +20,8 @@ class ProductBrand extends Model
         'status',
         'herlan_brand_id',
         'herlan_brand_slug',
+        'herlan_brand_uri',
+        'note',
     ];
 
     protected $searchableFields = ['*'];

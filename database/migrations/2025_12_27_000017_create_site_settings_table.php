@@ -28,10 +28,10 @@ return new class extends Migration {
             $table->text('tiktok_link')->nullable();
             $table->longText('header_custom_code')->nullable();
             $table->longText('footer_custom_code')->nullable();
-            $table->string('office_mobile');
-            $table->string('office_email');
-            $table->string('office_address');
-            $table->text('banner');
+            $table->string('office_mobile')->nullable();
+            $table->string('office_email')->nullable();
+            $table->string('office_address')->nullable();
+            $table->text('banner')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

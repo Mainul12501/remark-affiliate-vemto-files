@@ -35,6 +35,7 @@ return new class extends Migration {
                 ->enum('active_status', ['inactive', 'active'])
                 ->default('inactive');
             $table->string('active_till')->nullable();
+            $table->string('account_number')->nullable();
 
             $table->index('user_id');
             $table->index('bank_id');

@@ -22,10 +22,15 @@ return new class extends Migration {
             $table->text('sku')->unique();
             $table->tinyInteger('status');
             $table->unsignedBigInteger('herlan_product_id')->unique();
-            $table->text('herlan_product_uri')->unique();
+            $table->text('herlan_product_uri');
             $table->tinyInteger('affiliate_commission_rate')->default(0);
             $table->integer('total_clicked')->default(0);
             $table->integer('sold_count')->default(0);
+            $table->longText('short_description')->nullable();
+            $table->longText('long_description')->nullable();
+
+            $table->index('product_brand_id');
+            $table->index('herlan_product_id');
 
             $table->timestamps();
             $table->softDeletes();

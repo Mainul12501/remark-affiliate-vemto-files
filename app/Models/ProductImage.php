@@ -17,7 +17,7 @@ class ProductImage extends Model
         'product_id',
         'title',
         'src',
-        'order',
+        'position',
         'img_alt',
         'status',
         'herlan_img_id',

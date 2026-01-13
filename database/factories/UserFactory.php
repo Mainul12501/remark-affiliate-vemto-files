@@ -43,6 +43,7 @@ class UserFactory extends Factory
             'has_infl_partner_access' => $this->faker->numberBetween(0, 127),
             'is_super_dev' => $this->faker->numberBetween(0, 127),
             'user_slug' => $this->faker->text(255),
+            'profile_title' => $this->faker->text(255),
             'user_id' => function () {
                 return \App\Models\User::factory()->create([
                     'user_id' => null,

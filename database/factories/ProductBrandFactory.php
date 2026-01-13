@@ -29,6 +29,8 @@ class ProductBrandFactory extends Factory
             'status' => $this->faker->numberBetween(0, 127),
             'herlan_brand_id' => $this->faker->unique->randomNumber(),
             'herlan_brand_slug' => $this->faker->unique->text(255),
+            'herlan_brand_uri' => $this->faker->unique->text(),
+            'note' => $this->faker->text(),
         ];
     }
 }

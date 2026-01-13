@@ -28,6 +28,8 @@ class Product extends Model
         'affiliate_commission_rate',
         'total_clicked',
         'sold_count',
+        'short_description',
+        'long_description',
     ];
 
     protected $searchableFields = ['*'];

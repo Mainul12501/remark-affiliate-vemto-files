@@ -26,6 +26,7 @@ class UserBankInfo extends Model
         'status',
         'active_status',
         'active_till',
+        'account_number',
     ];
 
     protected $searchableFields = ['*'];
